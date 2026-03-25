@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,6 +19,11 @@ export const metadata: Metadata = {
   // title: "FoodHub - Votre resto préféré, à portée de main",
   title: "FoodHub Tunisie",
   description: "Découvrez les meilleurs restaurants tunisiens près de chez vous",
+  icons: {
+    icon: "/foodhub-logo.png",
+    shortcut: "/foodhub-logo.png",
+    apple: "/foodhub-logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -32,7 +38,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       {/* <body className="min-h-full flex flex-col">{children}</body> */}
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <AuthProvider>
+          {children}
+        </AuthProvider>
+      </body>
     </html>
   );
 }

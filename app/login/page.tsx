@@ -15,7 +15,7 @@ export default function Login() {
             <div className="min-h-screen bg-zinc-950 flex items-center justify-center px-4">
                 <div className="bg-zinc-900 border border-zinc-800 rounded-3xl w-full max-w-md p-10">
                     <div className="text-center mb-10">
-                        <h1 className="text-3xl font-bold text-white">Hamza Kmandy Food</h1>
+                        <h1 className="text-3xl font-bold text-white">TN Food Hub</h1>
                         <p className="text-xl text-white/90 mt-3">Espace réservé aux restaurants</p>
                         <p className="text-purple-400 mt-1">ou <Link href="/register" className="underline">créer un compte</Link></p>
                     </div>

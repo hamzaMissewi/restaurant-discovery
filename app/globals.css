@@ -138,4 +138,9 @@ body {
   html {
     @apply font-sans;
   }
+
+  button,
+  select {
+    cursor: pointer;
+  }
 }

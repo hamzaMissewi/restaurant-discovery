@@ -57,7 +57,8 @@ export default function Home() {
         </div>
 
         {/* Révolutionnez votre restaurant section */}
-        <div className="mt-20 bg-linear-to-r from-red-600 to-rose-700 text-white rounded-3xl p-10 text-center">
+        {/* <div className="mt-20 bg-linear-to-r from-red-600 to-rose-700 text-white rounded-3xl p-10 text-center"> */}
+        <div className="mt-20 bg-linear-to-r from-purple-600 to-indigo-700 text-white rounded-3xl p-10 text-center">
           <h2 className="text-4xl font-bold mb-3">Révolutionnez votre restaurant</h2>
           <p className="max-w-xl mx-auto mb-10 text-lg">
             La solution digitale complète qui transforme l’expérience client de votre établissement. Moderne, simple et efficace.

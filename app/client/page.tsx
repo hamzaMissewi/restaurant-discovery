@@ -1,110 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Search, MapPin, Clock, Star, Filter, Heart, ShoppingCart } from "lucide-react";
+import Header from "@/components/Header";
 import RestaurantCard from "@/components/RestaurantCard";
+import { mockRestaurants } from "@/data/restaurants";
+import { Clock, Filter, Heart, Search, ShoppingCart } from "lucide-react";
+import { useState } from "react";
 
-// Use the same mock restaurants from the main page
-const mockRestaurants = [
-  {
-    id: 1,
-    name: "King Tacos",
-    slug: "king-tacos",
-    category: "Fast Food",
-    rating: 5.0,
-    reviews: 788,
-    address: "Rue la République 56, Sayada, MONASTIR",
-    specialties: ["Tacos", "Pizza", "Makloub", "Burger"],
-    image: "/restaurants/tacos-burger.png",
-    time: "15-25 min",
-  },
-  {
-    id: 2,
-    name: "Restaurant Africain Les Délices d'Afrique",
-    slug: "restaurant-africain-delices-afrique",
-    category: "Restaurant",
-    rating: 5.0,
-    reviews: 708,
-    address: "2 rue Hedi nouira, EL MENZAH 1, TUNIS",
-    specialties: ["Grillades", "Bowls", "Box", "Afro"],
-    image: "/restaurants/africain-delices-afrique.png",
-    time: "20-30 min",
-  },
-  {
-    id: 3,
-    name: "Café Chich Khan",
-    slug: "cafe-chich-khan",
-    category: "Restaurant Traditionnel",
-    rating: 4.5,
-    reviews: 1250,
-    address: "Avenue Habib Bourguiba, Tunis",
-    specialties: ["Couscous", "Tajine", "Brick", "Méchoui"],
-    image: "/restaurants/chich-khan-coscous.png",
-    time: "25-35 min",
-  },
-  {
-    id: 4,
-    name: "Restaurant Le Grand Bleu",
-    slug: "restaurant-le-grand-bleu",
-    category: "Poisson et Fruits de Mer",
-    rating: 4.8,
-    reviews: 892,
-    address: "Port de La Goulette, Tunis",
-    specialties: ["Poisson Grillé", "Calamars", "Fruits de Mer", "Paella"],
-    image: "/restaurants/poisson-fruit-mer-goulette.png",
-    time: "30-40 min",
-  },
-  {
-    id: 5,
-    name: "Dar El Jeld",
-    slug: "dar-el-jeld",
-    category: "Restaurant Gastronomique",
-    rating: 4.9,
-    reviews: 2100,
-    address: "Medina de Tunis, 27, rue Tourbet El Bey",
-    specialties: ["Cuisine Traditionnelle", "Couscous Royal", "Pâtisseries", "Thé à la Menthe"],
-    image: "/restaurants/dar-el-jeld-couscous.png",
-    time: "35-45 min",
-  },
-  {
-    id: 6,
-    name: "Pizza Mania",
-    slug: "pizza-mania",
-    category: "Pizza",
-    rating: 4.2,
-    reviews: 456,
-    address: "Avenue Charles de Gaulle, El Menzah 6, Tunis",
-    specialties: ["Pizza Italienne", "Pizza Tunisienne", "Pâtes", "Salades"],
-    image: "/restaurants/pizza-mania.png",
-    time: "20-30 min",
-  },
-  {
-    id: 7,
-    name: "Restaurant El Dar",
-    slug: "restaurant-el-dar",
-    category: "Cuisine Tunisienne",
-    rating: 4.6,
-    reviews: 678,
-    address: "Rue Sidi Ben Arous, Medina, Tunis",
-    specialties: ["Ojja", "Chakchouka", "Brik", "Lablabi"],
-    image: "/restaurants/restaurant-el-dar-gamarth-coscous.png",
-    time: "25-35 min",
-  },
-  {
-    id: 8,
-    name: "Chez Slah",
-    slug: "chez-slah",
-    category: "Restaurant Populaire",
-    rating: 4.3,
-    reviews: 934,
-    address: "Bab Souika, Tunis",
-    specialties: ["Sandwich Tunisien", "Frites", "Harissa", "Légumes Grillés"],
-    image: "/restaurants/chez-slah-sandwich.png",
-    time: "15-20 min",
-  },
-];
+
 
 export default function ClientPage() {
   const [searchTerm, setSearchTerm] = useState("");

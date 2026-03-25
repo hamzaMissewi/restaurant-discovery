@@ -33,7 +33,7 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Pizza king", rating: 0.0, reviews: 0, price: 18.00, img: "/restaurants/pizza/pizza-king.png" },
       ],
     },
-    hours: "SAMEDI: 12:00 pm - 12:00 am | DIMANCHE: 12:00 pm - 12:00 am",
+    hours: "Lundi-Vendredi: 12:00 am - 01:00 am | Samedi-Dimanche: 12:00 am - 12:00 am",
   },
   {
     id: 2,
@@ -59,7 +59,7 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Brochette agneau", rating: 4.8, reviews: 8, price: 18.00, img: "/restaurants/grillades/brochette-agneau.png" },
       ],
     },
-    hours: "SAMEDI: 12:00 pm - 11:00 pm | DIMANCHE: 12:00 pm - 11:00 pm",
+    hours: "Lundi-Vendredi: 12:00 am - 01:00 am | Samedi-Dimanche: 12:00 am - 22:00",
   },
   {
     id: 3,
@@ -83,7 +83,7 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Couscous poulet", rating: 4.3, reviews: 22, price: 18.00, img: "/restaurants/cuisine-tradition/coscous-poulet.png" },
       ],
     },
-    hours: "SAMEDI: 12:00 pm - 10:00 pm | DIMANCHE: 12:00 pm - 10:00 pm",
+    hours: "Lundi-Vendredi: 12:00 am - 10:00 pm | DIMANCHE: 12:00 am - 10:00 pm",
   },
   {
     id: 4,
@@ -107,7 +107,7 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Sole grillée", rating: 4.5, reviews: 15, price: 28.00, img: "/restaurants/poisson/sole-grillee.png" },
       ],
     },
-    hours: "SAMEDI: 12:00 pm - 11:00 pm | DIMANCHE: 12:00 pm - 11:00 pm",
+    hours: "Lundi-Vendredi: 12:00 am - 01:00 am | Samedi-Dimanche: 12:00 am - 22:00",
   },
   {
     id: 5,
@@ -130,7 +130,7 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Tajine agneau", rating: 4.8, reviews: 85, price: 38.00, img: "/restaurants/cuisine-tradition/tajine-agneau.png" },
       ],
     },
-    hours: "SAMEDI: 12:00 pm - 10:00 pm | DIMANCHE: 12:00 pm - 10:00 pm",
+    hours: "Lundi-Vendredi: 12:00 am - 10:00 pm | DIMANCHE: 12:00 am - 10:00 pm",
   },
   {
     id: 6,
@@ -154,7 +154,7 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Regina", rating: 4.3, reviews: 28, price: 15.00, img: "/restaurants/pizza/regina.png" },
       ],
     },
-    hours: "SAMEDI: 12:00 pm - 12:00 am | DIMANCHE: 12:00 pm - 12:00 am",
+    hours: "Lundi-Vendredi: 12:00 am - 01:00 am | DIMANCHE: 12:00 am - 12:00 am",
   },
   {
     id: 7,
@@ -178,7 +178,7 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Ojja merguez", rating: 4.7, reviews: 38, price: 16.00, img: "/restaurants/ojja/ojja-merguez.png" },
       ],
     },
-    hours: "SAMEDI: 12:00 pm - 11:00 pm | DIMANCHE: 12:00 pm - 11:00 pm",
+    hours: "Lundi-Vendredi: 12:00 am - 01:00 am | Samedi-Dimanche: 12:00 am - 22:00",
   },
   {
     id: 8,
@@ -202,7 +202,7 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Sandwich casse-croûte", rating: 4.2, reviews: 43, price: 10.00, img: "/restaurants/sandwich/kaskrout.png" },
       ],
     },
-    hours: "SAMEDI: 12:00 pm - 10:00 pm | DIMANCHE: 12:00 pm - 10:00 pm",
+    hours: "Lundi-Vendredi: 12:00 am - 10:00 pm | DIMANCHE: 12:00 am - 10:00 pm",
   },
   {
     id: 9,
@@ -227,7 +227,7 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Makloub thon", rating: 4.3, reviews: 45, price: 13.00, img: "/restaurants/makloub/thon.png" },
       ],
     },
-    hours: "SAMEDI: 11:00 am - 11:00 pm | DIMANCHE: 11:00 am - 11:00 pm",
+    hours: "Lundi-Vendredi: 11:00 am - 01:00 am | DIMANCHE: 11:00 am - 01:00 am",
   },
   {
     id: 10,
@@ -252,7 +252,7 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Diavola", rating: 4.7, reviews: 95, price: 19.00, img: "/restaurants/pizza/diavola.png" },
       ],
     },
-    hours: "SAMEDI: 12:00 pm - 12:00 am | DIMANCHE: 12:00 pm - 12:00 am",
+    hours: "Lundi-Vendredi: 12:00 am - 01:00 am | DIMANCHE: 12:00 am - 12:00 am",
   },
   {
     id: 11,
@@ -277,7 +277,7 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Baklawa noix", rating: 4.7, reviews: 98, price: 22.00, img: "/restaurants/baklawa/baklawa-noix.png" },
       ],
     },
-    hours: "SAMEDI: 8:00 am - 8:00 pm | DIMANCHE: 8:00 am - 8:00 pm",
+    hours: "Lundi-Vendredi: 8:00 am - 8:00 pm | DIMANCHE: 8:00 am - 8:00 pm",
   },
   {
     id: 12,
@@ -304,13 +304,113 @@ export const mockRestaurants: Restaurant[] = [
         { name: "Mugs Special", rating: 4.9, reviews: 145, price: 28.00, img: "/restaurants/burger/burger-special.png" },
       ],
     },
-    hours: "SAMEDI: 11:00 am - 11:00 pm | DIMANCHE: 11:00 am - 11:00 pm",
+    hours: "Lundi-Vendredi: 11:00 am - 01:00 am | DIMANCHE: 11:00 am - 01:00 am",
   },
 ];
 
 export function getRestaurantBySlug(slug: string) {
   return mockRestaurants.find(restaurant => restaurant.slug === slug);
 }
+
+// Use the same mock restaurants from the main page
+export const mockRestaurants2 = [
+  {
+    id: 1,
+    name: "King Tacos",
+    slug: "king-tacos",
+    category: "Fast Food",
+    rating: 5.0,
+    reviews: 788,
+    address: "Rue la République 56, Sayada, MONASTIR",
+    specialties: ["Tacos", "Pizza", "Makloub", "Burger"],
+    image: "/restaurants/tacos-burger.png",
+    time: "15-25 min",
+  },
+  {
+    id: 2,
+    name: "Restaurant Africain Les Délices d'Afrique",
+    slug: "restaurant-africain-delices-afrique",
+    category: "Restaurant",
+    rating: 5.0,
+    reviews: 708,
+    address: "2 rue Hedi nouira, EL MENZAH 1, TUNIS",
+    specialties: ["Grillades", "Bowls", "Box", "Afro"],
+    image: "/restaurants/africain-delices-afrique.png",
+    time: "20-30 min",
+  },
+  {
+    id: 3,
+    name: "Café Chich Khan",
+    slug: "cafe-chich-khan",
+    category: "Restaurant Traditionnel",
+    rating: 4.5,
+    reviews: 1250,
+    address: "Avenue Habib Bourguiba, Tunis",
+    specialties: ["Couscous", "Tajine", "Brick", "Méchoui"],
+    image: "/restaurants/chich-khan-coscous.png",
+    time: "25-35 min",
+  },
+  {
+    id: 4,
+    name: "Restaurant Le Grand Bleu",
+    slug: "restaurant-le-grand-bleu",
+    category: "Poisson et Fruits de Mer",
+    rating: 4.8,
+    reviews: 892,
+    address: "Port de La Goulette, Tunis",
+    specialties: ["Poisson Grillé", "Calamars", "Fruits de Mer", "Paella"],
+    image: "/restaurants/poisson-fruit-mer-goulette.png",
+    time: "30-40 min",
+  },
+  {
+    id: 5,
+    name: "Dar El Jeld",
+    slug: "dar-el-jeld",
+    category: "Restaurant Gastronomique",
+    rating: 4.9,
+    reviews: 2100,
+    address: "Medina de Tunis, 27, rue Tourbet El Bey",
+    specialties: ["Cuisine Traditionnelle", "Couscous Royal", "Pâtisseries", "Thé à la Menthe"],
+    image: "/restaurants/dar-el-jeld-couscous.png",
+    time: "35-45 min",
+  },
+  {
+    id: 6,
+    name: "Pizza Mania",
+    slug: "pizza-mania",
+    category: "Pizza",
+    rating: 4.2,
+    reviews: 456,
+    address: "Avenue Charles de Gaulle, El Menzah 6, Tunis",
+    specialties: ["Pizza Italienne", "Pizza Tunisienne", "Pâtes", "Salades"],
+    image: "/restaurants/pizza-mania.png",
+    time: "20-30 min",
+  },
+  {
+    id: 7,
+    name: "Restaurant El Dar",
+    slug: "restaurant-el-dar",
+    category: "Cuisine Tunisienne",
+    rating: 4.6,
+    reviews: 678,
+    address: "Rue Sidi Ben Arous, Medina, Tunis",
+    specialties: ["Ojja", "Chakchouka", "Brik", "Lablabi"],
+    image: "/restaurants/restaurant-el-dar-gamarth-coscous.png",
+    time: "25-35 min",
+  },
+  {
+    id: 8,
+    name: "Chez Slah",
+    slug: "chez-slah",
+    category: "Restaurant Populaire",
+    rating: 4.3,
+    reviews: 934,
+    address: "Bab Souika, Tunis",
+    specialties: ["Sandwich Tunisien", "Frites", "Harissa", "Légumes Grillés"],
+    image: "/restaurants/chez-slah-sandwich.png",
+    time: "15-20 min",
+  },
+];
 
 
 
@@ -338,5 +438,5 @@ export function getRestaurantBySlug(slug: string) {
 //         ],
 //         // Add other categories similarly
 //     },
-//     hours: "SAMEDI: 12:00 pm - 12:00 am | DIMANCHE: 12:00 pm - 12:00 am",
+//     hours: "Lundi-Vendredi: 12:00 am - 01:00 am | DIMANCHE: 12:00 am - 12:00 am",
 // };

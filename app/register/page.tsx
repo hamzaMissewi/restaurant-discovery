@@ -57,10 +57,10 @@ export default function SignupPage() {
                 {/* Logo */}
                 <div className="text-center mb-8">
                     <div className="w-14 h-14 rounded-2xl bg-indigo-600 flex items-center justify-center mx-auto mb-3 shadow-lg shadow-indigo-900/50">
-                        <span className="text-white font-black text-lg">CMS</span>
+                        <span className="text-white font-black text-lg">FoodHub</span>
                     </div>
                     <h1 className="text-2xl font-bold text-white">Create Account</h1>
-                    <p className="text-slate-400 text-sm mt-1">LS3 Monitor Technical Person Power Tool</p>
+                    <p className="text-slate-400 text-sm mt-1">FoodHub - Restaurant Management System</p>
                 </div>
 
                 {/* Card */}
@@ -170,7 +170,8 @@ export default function SignupPage() {
                 </div>
 
                 <p className="text-center text-xs text-slate-600 mt-4">
-                    CERN CMS — Long Shutdown 3 · Restricted Access
+                    {/* CERN CMS — Long Shutdown 3 · Restricted Access */}
+                    Food Hub - Restaurant Management System · Restricted Access
                 </p>
             </div>
         </div>

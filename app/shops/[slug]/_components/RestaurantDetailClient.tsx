@@ -115,31 +115,33 @@ export default function RestaurantDetailClient({ restaurant }: RestaurantDetailC
                 </Tabs>
 
                 {/* Hours & Location */}
-                <div className="mt-16 grid md:grid-cols-2 gap-10">
-                    <div>
-                        <h2 className="text-2xl font-bold mb-4">Horaires d'ouverture</h2>
-                        <p className="text-lg">{restaurant.hours}</p>
-                    </div>
-                    <div>
-                        <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                            <MapPin /> Localisation
-                        </h2>
-                        <div className="bg-gray-100 h-80 rounded-3xl overflow-hidden">
-                            <iframe
-                                src={`https://maps.google.com/maps?q=${encodeURIComponent(restaurant.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                                width="100%"
-                                height="100%"
-                                style={{ border: 0 }}
-                                allowFullScreen
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                                title={`Map showing location of ${restaurant.name}`}
-                                className="rounded-3xl"
-                            />
-                        </div>
+                {/* <div className="mt-16 border-t border-gray-200 pt-2 grid md:grid-cols-2 gap-16"> */}
+                <div className="mt-4 border-t border-gray-400 py-6">
+                    <h2 className="text-2xl font-bold mb-4">Horaires d'ouverture</h2>
+                    <p className="text-md">{restaurant.hours}</p>
+                </div>
+
+                <div className="pt-8">
+                    <h2 className="text-2xl font-bold mb-8 flex items-center gap-6">
+                        <MapPin /> Localisation
+                    </h2>
+                    {/* <div className="bg-gray-100 h-90 w-[calc(100%+2rem)] rounded-3xl overflow-hidden"> */}
+                    <div className="bg-gray-100 h-90 w-full rounded-3xl overflow-hidden">
+                        <iframe
+                            src={`https://maps.google.com/maps?q=${encodeURIComponent(restaurant.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                            width="100%"
+                            height="100%"
+                            style={{ border: 0 }}
+                            allowFullScreen
+                            loading="lazy"
+                            referrerPolicy="no-referrer-when-downgrade"
+                            title={`Map showing location of ${restaurant.name}`}
+                            className="rounded-3xl"
+                        />
                     </div>
                 </div>
             </div>
+            {/* </div> */}
 
             <Footer />
         </>

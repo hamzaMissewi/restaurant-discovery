@@ -47,20 +47,17 @@ export default function NotFound() {
                 </div>
 
                 {/* Help Section */}
-                {/* <div className="mt-12 p-4 rounded-lg bg-white/5 border border-white/10">
+                <div className="mt-12 p-4 rounded-lg bg-white/5 border border-white/10">
                     <h2 className="text-sm font-semibold text-white mb-2">Need Help?</h2>
                     <p className="text-xs text-slate-400 mb-3">
                         If you believe this is an error, please contact the CMS LS3 support team.
                     </p>
                     <div className="flex flex-col gap-2 text-xs">
-                        <a href="mailto:support@cern.ch" className="text-indigo-400 hover:text-indigo-300 transition-colors">
-                            support@cern.ch
-                        </a>
-                        <a href="https://cms.cern" className="text-indigo-400 hover:text-indigo-300 transition-colors" target="_blank" rel="noopener noreferrer">
-                            CMS Portal →
+                        <a href="mailto:contact@hamzamissaoui.dev" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                            contact@hamzamissaoui.dev
                         </a>
                     </div>
-                </div> */}
+                </div>
 
                 {/* Footer */}
                 <div className="mt-8 pt-8 border-t border-white/10">

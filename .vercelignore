@@ -1,0 +1,70 @@
+# Dependencies
+/.pnp
+.pnp.*
+
+# Testing
+/coverage
+
+# Next.js
+/out/*
+/.next
+
+# Prisma
+/prisma/migrations/
+
+/graphql
+
+.github
+
+**/*.pdf
+!public/resume/resume.pdf
+!public/resume/en/**
+!public/resume/fr/**
+!public/resume/ar/**
+!public/resume/resume-en.pdf
+!public/resume/resume-fr.pdf
+!public/resume/resume-ar.pdf
+
+# Environment and local files
+*.local
+*.log
+.env*
+!.env.example
+
+# Version control
+/.git
+
+# Development
+/node_modules
+/.vscode
+
+# System files
+.DS_Store
+*.pem
+
+# TypeScript
+*.tsbuildinfo
+/next-env.d.ts
+
+scripts
+
+
+
+# Project specific
+**/*ignore*
+**/*backup*
+**/*copy*
+**/*old*
+
+
+src/messages
+
+# testing
+/coverage
+
+*other*
+# *other*/
+
+# next.js
+/out/*
+

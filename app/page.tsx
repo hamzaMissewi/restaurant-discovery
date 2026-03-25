@@ -1,65 +1,82 @@
-import Image from "next/image";
+"use client";
+
+import { useState } from "react";
+import { Search, Filter, MapPin, Star, Clock, Phone } from "lucide-react";
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import RestaurantCard from "@/components/RestaurantCard";
+import Footer from "@/components/Footer";
+import { mockRestaurants } from "@/data/restaurants";
 
 export default function Home() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filtered, setFiltered] = useState(mockRestaurants);
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const term = e.target.value.toLowerCase();
+    setSearchTerm(term);
+    const result = mockRestaurants.filter((r) =>
+      r.name.toLowerCase().includes(term) ||
+      r.specialties.some((s) => s.toLowerCase().includes(term))
+    );
+    setFiltered(result);
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <>
+      <Header />
+      <Hero />
+
+      <main className="max-w-7xl mx-auto px-4 py-8">
+        {/* Search + Filters */}
+        <div className="flex flex-col md:flex-row gap-4 mb-8">
+          <div className="relative flex-1">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Rechercher restaurants, plats..."
+              value={searchTerm}
+              onChange={handleSearch}
+              className="w-full pl-11 pr-4 py-4 rounded-2xl border border-gray-200 focus:border-red-600 outline-none text-lg"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+          </div>
+          <button className="flex items-center gap-2 px-8 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-medium">
+            <Filter className="w-5 h-5" />
+            Filtres
+          </button>
+        </div>
+
+        <p className="text-sm text-gray-500 mb-6">
+          {filtered.length} restaurant{filtered.length > 1 ? "s" : ""} trouvé{filtered.length > 1 ? "s" : ""}
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filtered.map((restaurant) => (
+            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+          ))}
+        </div>
+
+        {/* Révolutionnez votre restaurant section */}
+        <div className="mt-20 bg-linear-to-r from-red-600 to-rose-700 text-white rounded-3xl p-10 text-center">
+          <h2 className="text-4xl font-bold mb-3">Révolutionnez votre restaurant</h2>
+          <p className="max-w-xl mx-auto mb-10 text-lg">
+            La solution digitale complète qui transforme l’expérience client de votre établissement. Moderne, simple et efficace.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {["Menu numérique", "QR Code", "Mise à jour temps réel"].map((item, i) => (
+              <div key={i} className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 text-left">
+                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-2xl mb-4">📱</div>
+                <h3 className="font-semibold text-xl">{item}</h3>
+              </div>
+            ))}
+          </div>
+          <a href="/shop" className="inline-block mt-10 bg-white text-red-600 px-10 py-4 rounded-2xl font-semibold hover:scale-105 transition">
+            Devenir partenaire →
           </a>
         </div>
       </main>
-    </div>
+
+      <Footer />
+    </>
   );
 }

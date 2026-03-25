@@ -1,6 +1,6 @@
 export default function Hero() {
     return (
-        <section className="bg-gradient-to-br from-red-50 to-white py-16">
+        <section className="bg-linear-to-br from-red-50 to-white py-16">
             <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
                 <div>
                     <h1 className="text-6xl font-bold leading-none mb-6">
@@ -23,7 +23,8 @@ export default function Hero() {
 
                 <div className="relative">
                     <img
-                        src="https://picsum.photos/id/1015/800/600"
+                        // src="https://picsum.photos/id/1015/800/600"
+                        src="/hero-image.png"
                         alt="FoodHub Hero"
                         className="rounded-3xl shadow-2xl"
                     />

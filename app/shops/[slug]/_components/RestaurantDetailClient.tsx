@@ -31,8 +31,8 @@ export default function RestaurantDetailClient({ restaurant }: RestaurantDetailC
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 max-w-7xl mx-auto">
                     <div className="flex items-center gap-4">
-                        {/* <Image src={restaurant.logo} alt={restaurant.name} width={80} height={80} className="rounded-2xl border-4 border-white" /> */}
-                        <Image src={restaurant.image} alt={restaurant.name} width={80} height={80} className="rounded-2xl border-4 border-white" style={{ width: 'auto', height: 'auto' }} />
+                        <Image src={restaurant.image} alt={restaurant.name} width={100} height={100} className="rounded-2xl border-4 border-white aspect-square mt-4" />
+                        {/* <Image src={restaurant.image} alt={restaurant.name} fill className="rounded-2xl border-4 border-white aspect-square" style={{ width: "auto", height: "auto" }} /> */}
                         <div>
                             <h1 className="text-white text-5xl font-bold">{restaurant.name}</h1>
                             <p className="text-white/90 flex items-center gap-2 mt-1">
@@ -89,10 +89,10 @@ export default function RestaurantDetailClient({ restaurant }: RestaurantDetailC
                                     <Image
                                         src={item.img}
                                         alt={item.name}
-                                        width={140}
-                                        height={140}
-                                        className="rounded-2xl object-cover group-hover:scale-105 transition"
-                                        style={{ width: 'auto', height: 'auto' }}
+                                        width={240}
+                                        height={240}
+                                        className="rounded-2xl object-cover aspect-square group-hover:scale-105 transition"
+                                    // style={{ width: 'auto', height: 'auto' }}
                                     />
                                     <div className="flex-1 flex flex-col justify-between py-1">
                                         <div>

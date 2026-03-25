@@ -1,39 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Star, MapPin, Clock, Phone, Heart } from "lucide-react";
+import { Star, MapPin, Phone, Heart } from "lucide-react";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Restaurant } from "@/types";
 
-interface Restaurant {
-    id: number;
-    name: string;
-    slug: string;
-    category: string;
-    rating: number;
-    reviews: number;
-    address: string;
-    specialties: string[];
-    image: string;
-    time: string;
-    logo: string;
-    banner: string;
-    phone: string;
-    welcome: string;
-    categories: string[];
-    menu: {
-        [key: string]: Array<{
-            name: string;
-            rating: number;
-            reviews: number;
-            price: number;
-            img: string;
-        }> | undefined;
-    };
-    hours: string;
-}
 
 interface RestaurantDetailClientProps {
     restaurant: Restaurant;
@@ -52,13 +26,13 @@ export default function RestaurantDetailClient({ restaurant }: RestaurantDetailC
             {/* Banner */}
             <div className="relative h-80">
                 {/* <Image src={restaurant.banner} alt="banner" fill className="object-cover" /> */}
-                <Image src={restaurant.image} alt="banner" fill className="object-cover" />
+                <Image src={restaurant?.banner || restaurant.image} alt="banner" fill className="object-cover" />
                 <div className="absolute inset-0 bg-linear-to-b from-black/30 to-black/70" />
 
                 <div className="absolute bottom-0 left-0 right-0 p-6 max-w-7xl mx-auto">
                     <div className="flex items-center gap-4">
                         {/* <Image src={restaurant.logo} alt={restaurant.name} width={80} height={80} className="rounded-2xl border-4 border-white" /> */}
-                        <Image src={restaurant.image} alt={restaurant.name} width={80} height={80} className="rounded-2xl border-4 border-white" />
+                        <Image src={restaurant.image} alt={restaurant.name} width={80} height={80} className="rounded-2xl border-4 border-white" style={{ width: 'auto', height: 'auto' }} />
                         <div>
                             <h1 className="text-white text-5xl font-bold">{restaurant.name}</h1>
                             <p className="text-white/90 flex items-center gap-2 mt-1">
@@ -118,6 +92,7 @@ export default function RestaurantDetailClient({ restaurant }: RestaurantDetailC
                                         width={140}
                                         height={140}
                                         className="rounded-2xl object-cover group-hover:scale-105 transition"
+                                        style={{ width: 'auto', height: 'auto' }}
                                     />
                                     <div className="flex-1 flex flex-col justify-between py-1">
                                         <div>
@@ -149,8 +124,18 @@ export default function RestaurantDetailClient({ restaurant }: RestaurantDetailC
                         <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
                             <MapPin /> Localisation
                         </h2>
-                        <div className="bg-gray-100 h-80 rounded-3xl flex items-center justify-center text-gray-500">
-                            Google Map placeholder (embed real map later)
+                        <div className="bg-gray-100 h-80 rounded-3xl overflow-hidden">
+                            <iframe
+                                src={`https://maps.google.com/maps?q=${encodeURIComponent(restaurant.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title={`Map showing location of ${restaurant.name}`}
+                                className="rounded-3xl"
+                            />
                         </div>
                     </div>
                 </div>

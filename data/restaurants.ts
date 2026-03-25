@@ -79,8 +79,8 @@ export const mockRestaurants: Restaurant[] = [
     categories: ["Couscous", "Tajine", "Brick", "Méchoui"],
     menu: {
       Couscous: [
-        { name: "Couscous royal", rating: 4.9, reviews: 45, price: 25.00, img: "https://picsum.photos/id/1082/300/200" },
-        { name: "Couscous poulet", rating: 4.3, reviews: 22, price: 18.00, img: "https://picsum.photos/id/1062/300/200" },
+        { name: "Couscous royal", rating: 4.9, reviews: 45, price: 25.00, img: "/restaurants/cuisine-tradition/coscous-royale.png" },
+        { name: "Couscous poulet", rating: 4.3, reviews: 22, price: 18.00, img: "/restaurants/cuisine-tradition/coscous-poulet.png" },
       ],
     },
     hours: "SAMEDI: 12:00 pm - 10:00 pm | DIMANCHE: 12:00 pm - 10:00 pm",

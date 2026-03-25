@@ -9,7 +9,7 @@ export interface Restaurant {
     specialties: string[];
     image: string;
     time: string;
-    logo: string;
+    logo?: string;
     banner?: string;
     phone: string;
     welcome: string;

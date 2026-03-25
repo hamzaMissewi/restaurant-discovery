@@ -74,7 +74,7 @@ export default function ShopPage() {
               <h1 className="text-5xl font-bold">Espace Restaurant</h1>
             </div>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
-              La solution digitale complète qui transforme l'expérience client de votre établissement. 
+              La solution digitale complète qui transforme l'expérience client de votre établissement.
               Rejoignez les centaines de restaurants qui ont déjà modernisé leur service.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -115,7 +115,7 @@ export default function ShopPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Menu Numérique</h3>
                 <p className="text-gray-600">
-                  Remplacez vos menus papier par un menu numérique interactif, 
+                  Remplacez vos menus papier par un menu numérique interactif,
                   facile à mettre à jour et accessible à tous vos clients.
                 </p>
               </div>
@@ -126,7 +126,7 @@ export default function ShopPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">QR Code</h3>
                 <p className="text-gray-600">
-                  Générez des QR codes personnalisés pour chaque table. 
+                  Générez des QR codes personnalisés pour chaque table.
                   Vos clients scannent et accèdent instantanément à votre menu.
                 </p>
               </div>
@@ -137,7 +137,7 @@ export default function ShopPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Mise à jour temps réel</h3>
                 <p className="text-gray-600">
-                  Modifiez vos prix, ajoutez des plats ou gérez les ruptures de stock 
+                  Modifiez vos prix, ajoutez des plats ou gérez les ruptures de stock
                   en temps réel, directement depuis votre dashboard.
                 </p>
               </div>
@@ -150,7 +150,7 @@ export default function ShopPage() {
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-4xl font-bold text-center mb-4">Choisissez votre plan</h2>
             <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-              Des tarifs transparents adaptés à la taille de votre établissement. 
+              Des tarifs transparents adaptés à la taille de votre établissement.
               Sans engagement, annulez à tout moment.
             </p>
 
@@ -158,11 +158,10 @@ export default function ShopPage() {
               {plans.map((plan) => (
                 <div
                   key={plan.id}
-                  className={`bg-white rounded-3xl p-8 ${
-                    plan.highlighted
+                  className={`bg-white rounded-3xl p-8 ${plan.highlighted
                       ? "ring-2 ring-purple-600 shadow-xl scale-105"
                       : "shadow-lg hover:shadow-xl"
-                  } transition`}
+                    } transition`}
                 >
                   {plan.highlighted && (
                     <div className="bg-purple-600 text-white text-sm font-semibold px-4 py-2 rounded-full inline-block mb-4">
@@ -177,18 +176,17 @@ export default function ShopPage() {
                   <ul className="space-y-3 mb-8">
                     {plan.features.map((feature, i) => (
                       <li key={i} className="flex items-start gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="w-5 h-5 text-green-500 mt-0.5 shrink-0" />
                         <span className="text-gray-700">{feature}</span>
                       </li>
                     ))}
                   </ul>
                   <button
                     onClick={() => setSelectedPlan(plan.id)}
-                    className={`w-full py-3 rounded-2xl font-semibold transition ${
-                      plan.highlighted
+                    className={`w-full py-3 rounded-2xl font-semibold transition ${plan.highlighted
                         ? "bg-purple-600 hover:bg-purple-700 text-white"
                         : "border-2 border-purple-600 text-purple-600 hover:bg-purple-50"
-                    }`}
+                      }`}
                   >
                     {selectedPlan === plan.id ? "Sélectionné" : "Choisir ce plan"}
                   </button>
@@ -203,7 +201,7 @@ export default function ShopPage() {
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-4xl font-bold mb-6">Prêt à moderniser votre restaurant ?</h2>
             <p className="text-xl mb-8">
-              Rejoignez des centaines de restaurateurs qui font confiance à FoodHub 
+              Rejoignez des centaines de restaurateurs qui font confiance à FoodHub
               pour développer leur activité.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

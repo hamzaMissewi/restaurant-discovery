@@ -12,10 +12,10 @@ export default function Hero() {
 
                     <div className="flex items-center gap-8 text-sm">
                         <div className="flex items-center gap-3">
-                            <div className="bg-black text-white text-xs px-3 py-1 rounded-xl">iOS</div>
+                            <div className="bg-black text-white text-xs px-3 py-1 rounded-xl">Android</div>
                             <div>
-                                <p className="font-medium">Installez l’app</p>
-                                <p className="text-xs text-gray-500">Appuyez sur Partager → Sur l’écran d’accueil</p>
+                                <p className="font-medium">Application bientôt disponible</p>
+                                <p className="text-xs text-gray-500">Coming soon - Arrive bientôt</p>
                             </div>
                         </div>
                     </div>

@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
-import { Search, Filter, MapPin, Star, Clock, Phone } from "lucide-react";
+import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import RestaurantCard from "@/components/RestaurantCard";
-import Footer from "@/components/Footer";
 import { mockRestaurants } from "@/data/restaurants";
+import { Filter, Search } from "lucide-react";
+import { useState } from "react";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -40,7 +40,7 @@ export default function Home() {
               className="w-full pl-11 pr-4 py-4 rounded-2xl border border-gray-200 focus:border-red-600 outline-none text-lg"
             />
           </div>
-          <button className="flex items-center gap-2 px-8 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-medium">
+          <button className="flex items-center gap-2 px-8 bg-red-600 py-3 hover:bg-red-700 text-white rounded-2xl font-medium">
             <Filter className="w-5 h-5" />
             Filtres
           </button>

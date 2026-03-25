@@ -144,8 +144,8 @@ export default function ClientPage() {
   };
 
   const toggleFavorite = (id: number) => {
-    setFavorites(prev => 
-      prev.includes(id) 
+    setFavorites(prev =>
+      prev.includes(id)
         ? prev.filter(fav => fav !== id)
         : [...prev, id]
     );
@@ -157,8 +157,8 @@ export default function ClientPage() {
 
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
-        <div className="bg-linear-to-r from-yellow-400 to-orange-500 text-white py-16">
-          <div className="max-w-7xl mx-auto px-4">
+        <div className="bg-linear-to-r from-yellow-200 to-orange-500 py-16">
+          <div className="max-w-7xl mx-auto px-4 text-black">
             <div className="flex items-center mb-6">
               <ShoppingCart className="w-10 h-10 mr-3" />
               <h1 className="text-4xl font-bold">Espace Client</h1>
@@ -166,7 +166,7 @@ export default function ClientPage() {
             <p className="text-xl mb-8">
               Découvrez les meilleurs restaurants tunisiens et commandez vos plats préférés en quelques clics.
             </p>
-            
+
             {/* Search Bar */}
             <div className="relative max-w-2xl">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
@@ -175,7 +175,8 @@ export default function ClientPage() {
                 placeholder="Rechercher restaurants, plats, adresses..."
                 value={searchTerm}
                 onChange={handleSearch}
-                className="w-full pl-11 pr-4 py-4 rounded-2xl text-gray-900 focus:outline-none focus:ring-4 focus:ring-white/30"
+                className="w-full pl-11 pr-4 py-4 rounded-2xl text-gray-900 focus:outline-none "
+              // focus:ring-white/30 focus:ring-4
               />
             </div>
           </div>
@@ -185,17 +186,16 @@ export default function ClientPage() {
         <div className="bg-white border-b sticky top-16 z-40">
           <div className="max-w-7xl mx-auto px-4 py-4">
             <div className="flex items-center gap-4 overflow-x-auto">
-              <Filter className="w-5 h-5 text-gray-600 flex-shrink-0" />
+              <Filter className="w-5 h-5 text-gray-600 shrink-0" />
               <div className="flex gap-2 overflow-x-auto">
                 {categories.map((category) => (
                   <button
                     key={category}
                     onClick={() => handleCategoryChange(category)}
-                    className={`px-4 py-2 rounded-2xl text-sm font-medium whitespace-nowrap transition ${
-                      selectedCategory === category
-                        ? "bg-orange-500 text-white"
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
+                    className={`px-4 py-2 rounded-2xl text-sm font-medium whitespace-nowrap transition ${selectedCategory === category
+                      ? "bg-orange-500 text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                      }`}
                   >
                     {category}
                   </button>
@@ -231,12 +231,11 @@ export default function ClientPage() {
                     onClick={() => toggleFavorite(restaurant.id)}
                     className="absolute top-3 right-3 z-10 bg-white/90 backdrop-blur-sm rounded-full p-2 hover:bg-white transition"
                   >
-                    <Heart 
-                      className={`w-5 h-5 ${
-                        favorites.includes(restaurant.id) 
-                          ? "fill-red-500 text-red-500" 
-                          : "text-gray-600"
-                      }`} 
+                    <Heart
+                      className={`w-5 h-5 ${favorites.includes(restaurant.id)
+                        ? "fill-red-500 text-red-500"
+                        : "text-gray-600"
+                        }`}
                     />
                   </button>
                   <RestaurantCard restaurant={restaurant} />

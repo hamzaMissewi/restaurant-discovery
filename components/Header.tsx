@@ -30,7 +30,7 @@ export default function Header() {
     return (
         <header className="bg-white border-b sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-                <Link href="/" className="text-2xl font-bold text-purple-600">Kmandy Food</Link>
+                <Link href="/" className="text-2xl font-bold text-purple-600">🌮 Kmandy Food</Link>
 
                 <div className="flex items-center gap-3">
                     <Link href="/client" className="flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-black px-5 py-2 rounded-2xl font-medium text-sm">

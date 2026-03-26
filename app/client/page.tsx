@@ -3,7 +3,7 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import RestaurantCard from "@/components/RestaurantCard";
-import { mockRestaurants } from "@/data/restaurants";
+import { Restaurants } from "@/data/restaurants";
 import { Clock, Filter, Heart, Search, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 
@@ -11,7 +11,7 @@ import { useState } from "react";
 
 export default function ClientPage() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filtered, setFiltered] = useState(mockRestaurants);
+  const [filtered, setFiltered] = useState(Restaurants);
   const [selectedCategory, setSelectedCategory] = useState("Tous");
   const [favorites, setFavorites] = useState<number[]>([]);
 
@@ -29,7 +29,7 @@ export default function ClientPage() {
   };
 
   const filterRestaurants = (term: string, category: string) => {
-    let result = mockRestaurants;
+    let result = Restaurants;
 
     if (category !== "Tous") {
       result = result.filter(r => r.category === category);
@@ -157,7 +157,7 @@ export default function ClientPage() {
                 Mes favoris ({favorites.length})
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {mockRestaurants
+                {Restaurants
                   .filter(r => favorites.includes(r.id))
                   .map((restaurant) => (
                     <div key={restaurant.id} className="relative">

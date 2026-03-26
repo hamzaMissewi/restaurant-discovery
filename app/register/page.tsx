@@ -57,7 +57,8 @@ export default function SignupPage() {
                 {/* Logo */}
                 <div className="text-center mb-8">
                     <div className="w-14 h-14 rounded-2xl bg-indigo-600 flex items-center justify-center mx-auto mb-3 shadow-lg shadow-indigo-900/50">
-                        <span className="text-white font-black text-lg">FoodHub</span>
+                        {/* <span className="text-white font-black text-lg">FoodHub</span> */}
+                        <span className="text-white font-black text-lg">H M</span>
                     </div>
                     <h1 className="text-2xl font-bold text-white">Create Account</h1>
                     <p className="text-slate-400 text-sm mt-1">FoodHub - Restaurant Management System</p>
@@ -159,11 +160,16 @@ export default function SignupPage() {
                         </button>
                     </form>
 
-                    <div className="mt-4 pt-4 border-t border-white/10 text-center">
+                    <div className="mt-4 pt-4 border-t border-white/10 text-center space-y-2">
                         <p className="text-xs text-slate-400">
                             Already have an account?{" "}
                             <a href="/login" className="text-indigo-400 hover:text-indigo-300 transition-colors">
                                 Sign in
+                            </a>
+                        </p>
+                        <p className="text-xs text-slate-400">
+                            <a href="/" className="text-indigo-400 hover:text-indigo-300 transition-colors">
+                                ← Go back home
                             </a>
                         </p>
                     </div>

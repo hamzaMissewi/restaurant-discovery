@@ -4,18 +4,19 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import RestaurantCard from "@/components/RestaurantCard";
-import { mockRestaurants } from "@/data/restaurants";
+import { Restaurants } from "@/data/restaurants";
 import { Filter, Search } from "lucide-react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filtered, setFiltered] = useState(mockRestaurants);
+  const [filtered, setFiltered] = useState(Restaurants);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
-    const result = mockRestaurants.filter((r) =>
+    const result = Restaurants.filter((r) =>
       r.name.toLowerCase().includes(term) ||
       r.specialties.some((s) => s.toLowerCase().includes(term))
     );
@@ -40,10 +41,10 @@ export default function Home() {
               className="w-full pl-11 pr-4 py-4 rounded-2xl border border-gray-200 focus:border-red-600 outline-none text-lg"
             />
           </div>
-          <button className="flex items-center gap-2 px-8 bg-red-600 py-3 hover:bg-red-700 text-white rounded-2xl font-medium">
+          <Button className="flex items-center gap-2 px-4 py-5 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-medium">
             <Filter className="w-5 h-5" />
             Filtres
-          </button>
+          </Button>
         </div>
 
         <p className="text-sm text-gray-500 mb-6">

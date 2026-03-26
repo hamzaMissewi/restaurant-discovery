@@ -5,16 +5,16 @@ import { Search, Filter } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RestaurantCard from "@/components/RestaurantCard";
-import { mockRestaurants } from "@/data/restaurants";
+import { Restaurants } from "@/data/restaurants";
 
 export default function V2Page() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filtered, setFiltered] = useState(mockRestaurants);
+  const [filtered, setFiltered] = useState(Restaurants);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
     setSearchTerm(term);
-    const result = mockRestaurants.filter((r) =>
+    const result = Restaurants.filter((r) =>
       r.name.toLowerCase().includes(term) ||
       r.specialties.some((s) => s.toLowerCase().includes(term))
     );

@@ -1,11 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Star, MapPin, Phone, Heart } from "lucide-react";
+import { Star, MapPin, Phone, Heart, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import QRCodeAddress from "@/components/QRCodeAddress";
+import Cart from "@/components/Cart";
+import { useCart } from "@/contexts/CartContext";
 import { Restaurant } from "@/types";
 
 
@@ -16,8 +19,21 @@ interface RestaurantDetailClientProps {
 export default function RestaurantDetailClient({ restaurant }: RestaurantDetailClientProps) {
     const [activeCategory, setActiveCategory] = useState(restaurant.categories[0] || "Tacos");
     const [liked, setLiked] = useState(false);
+    const { addItem } = useCart();
 
     const currentItems = restaurant.menu[activeCategory] || [];
+
+    const handleAddToCart = (item: any, category: string) => {
+        addItem({
+            id: `${restaurant.id}-${item.name}-${category}`,
+            name: item.name,
+            price: item.price,
+            image: item.img,
+            restaurantId: restaurant.id,
+            restaurantName: restaurant.name,
+            category: category,
+        });
+    };
 
     return (
         <>
@@ -45,7 +61,7 @@ export default function RestaurantDetailClient({ restaurant }: RestaurantDetailC
                 <div className="absolute top-6 right-6 bg-white/90 backdrop-blur px-5 py-2 rounded-3xl flex items-center gap-2 text-sm font-medium">
                     <Phone className="w-5 h-5 text-purple-600" />
                     <a href={`tel:${restaurant.phone}`} className="text-purple-600">{restaurant.phone}</a>
-                    <span className="text-purple-600">Appelez</span>
+                    {/* <span className="text-purple-600">Appelez</span> */}
                 </div>
             </div>
 
@@ -104,8 +120,16 @@ export default function RestaurantDetailClient({ restaurant }: RestaurantDetailC
                                                 <span className="text-gray-400">({item.reviews})</span>
                                             </div>
                                         </div>
-                                        <div className="text-3xl font-bold text-purple-600">
-                                            {item.price.toFixed(2)} <span className="text-base font-normal text-gray-500">TND</span>
+                                        <div className="flex items-center justify-between">
+                                            <div className="text-3xl font-bold text-purple-600">
+                                                {item.price.toFixed(2)} <span className="text-base font-normal text-gray-500">TND</span>
+                                            </div>
+                                            <button
+                                                onClick={() => handleAddToCart(item, activeCategory)}
+                                                className="bg-purple-600 text-white p-3 rounded-xl hover:bg-purple-700 transition-colors"
+                                            >
+                                                <ShoppingCart className="w-5 h-5" />
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -126,24 +150,36 @@ export default function RestaurantDetailClient({ restaurant }: RestaurantDetailC
                         <MapPin /> Localisation
                     </h2>
                     {/* <div className="bg-gray-100 h-90 w-[calc(100%+2rem)] rounded-3xl overflow-hidden"> */}
-                    <div className="bg-gray-100 h-90 w-full rounded-3xl overflow-hidden">
-                        <iframe
-                            src={`https://maps.google.com/maps?q=${encodeURIComponent(restaurant.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
-                            width="100%"
-                            height="100%"
-                            style={{ border: 0 }}
-                            allowFullScreen
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            title={`Map showing location of ${restaurant.name}`}
-                            className="rounded-3xl"
-                        />
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <div className="md:col-span-2">
+                            <div className="bg-gray-100 h-90 w-full rounded-3xl overflow-hidden">
+                                <iframe
+                                    src={`https://maps.google.com/maps?q=${encodeURIComponent(restaurant.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                                    width="100%"
+                                    height="100%"
+                                    style={{ border: 0 }}
+                                    allowFullScreen
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title={`Map showing location of ${restaurant.name}`}
+                                    className="rounded-3xl"
+                                />
+                            </div>
+                        </div>
+                        <div className="flex flex-col items-center justify-center bg-white border rounded-3xl p-6 shadow-lg">
+                            <QRCodeAddress
+                                address={restaurant.address}
+                                restaurantName={restaurant.name}
+                                size={180}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
             {/* </div> */}
 
             <Footer />
+            <Cart />
         </>
     );
 }

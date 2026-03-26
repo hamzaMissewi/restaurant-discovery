@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { CartProvider } from "@/contexts/CartContext";
+import { CookieConsentProvider } from "@/contexts/CookieConsentContext";
+import CookieConsent from "@/components/CookieConsent";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,9 +42,14 @@ export default function RootLayout({
     >
       {/* <body className="min-h-full flex flex-col">{children}</body> */}
       <body className={inter.className}>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <CookieConsentProvider>
+          <AuthProvider>
+            <CartProvider>
+              {children}
+              <CookieConsent />
+            </CartProvider>
+          </AuthProvider>
+        </CookieConsentProvider>
       </body>
     </html>
   );

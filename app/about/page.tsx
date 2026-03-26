@@ -53,7 +53,7 @@ export default function AboutPage() {
       role: "Fondateur & CEO",
       // image: "/api/placeholder/200/200/hamza-tn",
       image: "/team/hamza.png",
-      description: "Passionné par la technologie et la restauration, Hamza a lancé FoodHub pour révolutionner l'expérience restaurant en Tunisie."
+      description: "Passionné par la technologie et la restauration, Hamza a lancé KmandyFood pour révolutionner l'expérience restaurant en Tunisie."
     },
     {
       name: "Sarah Ben Ali",
@@ -67,7 +67,7 @@ export default function AboutPage() {
     //   role: "Head of Design",
     //   // image: "/api/placeholder/200/200/mehdi-karray",
     //   image: "/team/mehdi.png",
-    //   description: "Créatif et orienté UX, Mehdi s'assure que FoodHub offre la meilleure expérience possible aux utilisateurs."
+    //   description: "Créatif et orienté UX, Mehdi s'assure que KmandyFood offre la meilleure expérience possible aux utilisateurs."
     // }
   ];
 
@@ -95,7 +95,7 @@ export default function AboutPage() {
   ];
 
   const milestones = [
-    { year: "2024", event: "Lancement de FoodHub en Tunisie" },
+    { year: "2024", event: "Lancement de KmandyFood en Tunisie" },
     { year: "2025", event: "100+ restaurants partenaires" },
     { year: "2026", event: "Expansion internationale prévue" }
   ];
@@ -109,9 +109,9 @@ export default function AboutPage() {
         {/* <div className="bg-linear-to-r from-purple-600 to-indigo-700 text-white py-20"> */}
         <div className="bg-linear-to-r from-red-600 to-rose-700 text-white py-20">
           <div className="max-w-7xl mx-auto px-4 text-center">
-            <h1 className="text-5xl font-bold mb-6">À propos de FoodHub</h1>
+            <h1 className="text-5xl font-bold mb-6">À propos de KmandyFood</h1>
             <p className="text-xl max-w-3xl mx-auto">
-              Né en Tunisie, FoodHub est la solution digitale qui transforme l'expérience restaurant pour des milliers de clients et de restaurateurs à travers le pays.
+              Né en Tunisie, KmandyFood est la solution digitale qui transforme l'expérience restaurant pour des milliers de clients et de restaurateurs à travers le pays.
             </p>
           </div>
         </div>
@@ -214,7 +214,7 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <Mail className="w-5 h-5" />
-                    <span>contact@foodhub.tn</span>
+                    <span>contact@KmandyFood.tn</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="w-5 h-5" />

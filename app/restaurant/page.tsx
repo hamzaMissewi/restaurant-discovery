@@ -14,6 +14,9 @@ export default function RestaurantPage() {
     address: "",
     description: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState("");
 
   const benefits = [
     {
@@ -47,15 +50,111 @@ export default function RestaurantPage() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+    setErrorMessage("");
+
+    // Validate form data
+    if (!formData.restaurantName || !formData.email || !formData.phone || !formData.address) {
+      setErrorMessage("Veuillez remplir tous les champs obligatoires.");
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setErrorMessage("Veuillez entrer une adresse email valide.");
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
+    // Phone validation (Tunisian format)
+    const phoneRegex = /^\+216\s?\d{2}\s?\d{3}\s?\d{3}$/;
+    if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
+      setErrorMessage("Veuillez entrer un numéro de téléphone tunisien valide (format: +216 XX XXX XXX).");
+      setSubmitStatus('error');
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Send data to your API endpoint
+      const response = await fetch('/api/restaurant-submission', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          submittedAt: new Date().toISOString(),
+          source: 'restaurant-landing-page'
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        // Reset form
+        setFormData({
+          restaurantName: "",
+          email: "",
+          phone: "",
+          address: "",
+          description: "",
+        });
+
+        // Scroll to top to show success message
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setErrorMessage("Une erreur est survenue lors de l'envoi. Veuillez réessayer plus tard.");
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <>
       <Header />
+
+      {/* Success/Error Messages */}
+      {submitStatus === 'success' && (
+        <div className="bg-green-50 border-b border-green-200">
+          <div className="max-w-7xl mx-auto px-4 py-4">
+            <div className="flex items-center gap-3">
+              <CheckCircle className="w-5 h-5 text-green-600" />
+              <div>
+                <h3 className="font-semibold text-green-800">Demande envoyée avec succès!</h3>
+                <p className="text-green-600 text-sm">Nous avons bien reçu votre demande. Notre équipe vous contactera dans les 24h.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {submitStatus === 'error' && (
+        <div className="bg-red-50 border-b border-red-200">
+          <div className="max-w-7xl mx-auto px-4 py-4">
+            <div className="flex items-center gap-3">
+              <div className="w-5 h-5 bg-red-600 rounded-full flex items-center justify-center">
+                <span className="text-white text-xs">!</span>
+              </div>
+              <div>
+                <h3 className="font-semibold text-red-800">Erreur lors de l'envoi</h3>
+                <p className="text-red-600 text-sm">{errorMessage || "Veuillez réessayer plus tard."}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="min-h-screen bg-linear-to-br from-purple-50 to-white">
         {/* Hero Section */}
@@ -66,7 +165,7 @@ export default function RestaurantPage() {
               <h1 className="text-5xl font-bold">Espace Restaurant</h1>
             </div>
             <p className="text-xl mb-8 max-w-3xl mx-auto">
-              Rejoignez FoodHub et transformez votre restaurant en une expérience digitale moderne. 
+              Rejoignez KmandyFood et transformez votre restaurant en une expérience digitale moderne.
               Des milliers de clients vous attendent déjà.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -100,7 +199,7 @@ export default function RestaurantPage() {
         {/* Benefits Section */}
         <div className="py-20">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-16">Pourquoi FoodHub ?</h2>
+            <h2 className="text-4xl font-bold text-center mb-16">Pourquoi KmandyFood ?</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {benefits.map((benefit, i) => (
                 <div key={i} className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition">
@@ -137,7 +236,7 @@ export default function RestaurantPage() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:border-purple-600 focus:outline-none"
-                      placeholder="Restaurant Example"
+                      placeholder="e.g: Paris Restaurant"
                     />
                   </div>
                   <div>
@@ -151,7 +250,7 @@ export default function RestaurantPage() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:border-purple-600 focus:outline-none"
-                      placeholder="contact@restaurant.tn"
+                      placeholder="e.g: contact@your_restaurant.tn"
                     />
                   </div>
                 </div>
@@ -168,7 +267,7 @@ export default function RestaurantPage() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:border-purple-600 focus:outline-none"
-                      placeholder="+216 XX XXX XXX"
+                      placeholder="format: +216 XX XXX XXX"
                     />
                   </div>
                   <div>
@@ -182,7 +281,7 @@ export default function RestaurantPage() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:border-purple-600 focus:outline-none"
-                      placeholder="Rue de la République, Tunis"
+                      placeholder="e.g: Rue de la République, Tunis"
                     />
                   </div>
                 </div>
@@ -225,9 +324,17 @@ export default function RestaurantPage() {
 
                 <button
                   type="submit"
-                  className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-4 rounded-2xl text-lg transition"
+                  disabled={isSubmitting}
+                  className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-purple-400 text-white font-semibold py-4 rounded-2xl text-lg transition flex items-center justify-center gap-3"
                 >
-                  Demander ma démo gratuite
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      Envoi en cours...
+                    </>
+                  ) : (
+                    "Demander ma démo gratuite"
+                  )}
                 </button>
               </form>
             </div>

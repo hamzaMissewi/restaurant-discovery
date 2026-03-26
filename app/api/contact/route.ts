@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'FoodHub Contact <contact@foodhub.tn>',
+      from: 'KmandyFood Contact <contact@KmandyFood.tn>',
       to: 'contact@hamzamissaoui.dev',
       subject: `Nouveau message de contact de ${name}`,
       html: `
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
             <p style="margin: 0; color: #6b7280; font-size: 14px;">
-              Cet email a été envoyé depuis le formulaire de contact de FoodHub Tunisie
+              Cet email a été envoyé depuis le formulaire de contact de KmandyFood Tunisie
             </p>
           </div>
         </div>

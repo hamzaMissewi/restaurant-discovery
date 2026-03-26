@@ -1,18 +1,118 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ShoppingCart, X, Plus, Minus, Trash2 } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
+import { useAuth } from "@/contexts/AuthContext";
 import Image from "next/image";
+import { loadStripe } from "@stripe/stripe-js";
+
+interface RestaurantData {
+  restaurantId: number;
+  restaurantName: string;
+  items: any[];
+}
+
+interface ItemsByRestaurant {
+  [key: number]: RestaurantData;
+}
 
 export default function Cart() {
   const { state, removeItem, updateQuantity, clearCart } = useCart();
+  const { user } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
-  const handleCheckout = () => {
-    // TODO: Integrate with Stripe payment
-    alert("Redirecting to payment...");
+  const handleCheckout = async () => {
+    if (!user) {
+      alert("Veuillez vous connecter pour passer commande");
+      return;
+    }
+
+    if (state.items.length === 0) {
+      alert("Votre panier est vide");
+      return;
+    }
+
+    setIsProcessing(true);
+
+    try {
+      // Group items by restaurant
+      const itemsByRestaurant: ItemsByRestaurant = state.items.reduce((acc, item) => {
+        if (!acc[item.restaurantId]) {
+          acc[item.restaurantId] = {
+            restaurantId: item.restaurantId,
+            restaurantName: item.restaurantName,
+            items: []
+          };
+        }
+        acc[item.restaurantId].items.push(item);
+        return acc;
+      }, {} as ItemsByRestaurant);
+
+      // For now, we'll handle single restaurant checkout
+      // In a real app, you might want to handle multiple restaurants separately
+      const restaurantData = Object.values(itemsByRestaurant)[0];
+
+      if (!restaurantData) {
+        alert("Erreur: aucune donnée de restaurant trouvée");
+        return;
+      }
+
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          items: restaurantData.items,
+          restaurantId: restaurantData.restaurantId,
+          restaurantName: restaurantData.restaurantName,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create checkout session');
+      }
+
+      const { sessionId } = await response.json();
+
+      // Redirect to Stripe Checkout
+      const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+      if (stripe) {
+        const { error } = await stripe.redirectToCheckout({
+          sessionId,
+        });
+
+        if (error) {
+          console.error('Stripe redirect error:', error);
+          alert('Erreur lors de la redirection vers le paiement. Veuillez réessayer.');
+        }
+      }
+    } catch (error) {
+      console.error('Checkout error:', error);
+      alert('Une erreur est survenue. Veuillez réessayer.');
+    } finally {
+      setIsProcessing(false);
+    }
   };
+
+  // Listen for checkout event from cart page
+  useEffect(() => {
+    const handleCheckoutEvent = () => {
+      handleCheckout();
+    };
+
+    window.addEventListener('checkout', handleCheckoutEvent);
+
+    return () => {
+      window.removeEventListener('checkout', handleCheckoutEvent);
+    };
+  }, [handleCheckout]);
+
+  if (!user) {
+    return null; // Don't show cart for non-logged-in users
+  }
 
   if (state.itemCount === 0) {
     return (
@@ -131,9 +231,10 @@ export default function Cart() {
             </div>
             <button
               onClick={handleCheckout}
-              className="w-full bg-purple-600 text-white py-3 rounded-xl font-medium hover:bg-purple-700 transition-colors"
+              disabled={isProcessing}
+              className="w-full bg-purple-600 text-white py-3 rounded-xl font-medium hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Proceed to Checkout
+              {isProcessing ? 'Traitement en cours...' : 'Proceed to Checkout'}
             </button>
           </div>
         </div>

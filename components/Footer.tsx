@@ -29,9 +29,9 @@ export default function Footer() {
 
                 <div className="">
                     <h4 className="font-semibold mb-4 text-white text-sm">Contact</h4>
-                    {/* <p>foodhub@foodhub.tn</p> */}
+                    {/* <p>KmandyFood@KmandyFood.tn</p> */}
                     <p className="text-sm">contact@hamzamissaoui.dev | contact@hamzamissaoui.online</p>
-                    {/* <p className="mt-6">@foodhub.tn</p> */}
+                    {/* <p className="mt-6">@KmandyFood.tn</p> */}
                     <p className="mt-6 text-sm">https://www.hamzamissaoui.dev</p>
                 </div>
             </div>

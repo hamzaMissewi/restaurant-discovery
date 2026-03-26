@@ -25,7 +25,7 @@ export default function Hero() {
                     <img
                         // src="https://picsum.photos/id/1015/800/600"
                         src="/hero-image.png"
-                        alt="FoodHub Hero"
+                        alt="KmandyFood Hero"
                         className="rounded-3xl shadow-2xl"
                     />
                 </div>

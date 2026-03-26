@@ -28,8 +28,8 @@ export default function Footer() {
 
                 <div>
                     <h4 className="font-semibold mb-4 text-white">Contact</h4>
-                    <p>foodhub@foodhub.tn</p>
-                    <p className="mt-6">@foodhub.tn</p>
+                    <p>KmandyFood@KmandyFood.tn</p>
+                    <p className="mt-6">@KmandyFood.tn</p>
                 </div>
             </div>
 
@@ -45,7 +45,7 @@ export function Footer0() {
     return (
         <footer className="bg-gray-900 text-white py-12">
             <div className="max-w-7xl mx-auto px-4 text-center">
-                <p className="text-3xl font-bold mb-2">FoodHub</p>
+                <p className="text-3xl font-bold mb-2">KmandyFood</p>
                 <p className="text-sm text-gray-400">© 2026 TN Food Hub. Tous droits réservés.</p>
                 {/* <p className="text-sm text-red-400 mt-1">Fait avec ❤️ en Tunisie</p> */}
             </div>

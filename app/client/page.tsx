@@ -5,15 +5,36 @@ import Header from "@/components/Header";
 import RestaurantCard from "@/components/RestaurantCard";
 import { Restaurants } from "@/data/restaurants";
 import { Clock, Filter, Heart, Search, ShoppingCart } from "lucide-react";
-import { useState } from "react";
-
-
+import { useState, useEffect } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useRouter } from "next/navigation";
 
 export default function ClientPage() {
+  const { user } = useAuth();
+  const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [filtered, setFiltered] = useState(Restaurants);
   const [selectedCategory, setSelectedCategory] = useState("Tous");
   const [favorites, setFavorites] = useState<number[]>([]);
+
+  // Redirect to login if user is not authenticated
+  useEffect(() => {
+    if (!user) {
+      router.push("/client/login");
+    }
+  }, [user, router]);
+
+  // Show loading state while checking authentication
+  if (!user) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-center">
+          <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Vérification de l'authentification...</p>
+        </div>
+      </div>
+    );
+  }
 
   const categories = ["Tous", "Fast Food", "Restaurant", "Restaurant Traditionnel", "Poisson et Fruits de Mer", "Restaurant Gastronomique", "Pizza", "Cuisine Tunisienne", "Restaurant Populaire"];
 

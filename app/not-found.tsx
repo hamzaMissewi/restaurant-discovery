@@ -62,7 +62,7 @@ export default function NotFound() {
                 {/* Footer */}
                 <div className="mt-8 pt-8 border-t border-white/10">
                     <p className="text-[10px] text-slate-500">
-                        Hamza TN - FoodHub © 2026
+                        Hamza TN - KmandyFood © 2026
                     </p>
                 </div>
             </div>

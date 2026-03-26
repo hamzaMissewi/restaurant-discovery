@@ -1,7 +1,7 @@
--- Database Schema for FoodHub Application
+-- Database Schema for KmandyFood Application
 
 -- Create database (run this first)
--- CREATE DATABASE foodhub;
+-- CREATE DATABASE KmandyFood;
 
 -- Users table with cookie consent
 CREATE TABLE IF NOT EXISTS users (

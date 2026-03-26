@@ -19,8 +19,8 @@ const geistMono = Geist_Mono({
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  // title: "FoodHub - Votre resto préféré, à portée de main",
-  title: "FoodHub Tunisie",
+  // title: "KmandyFood - Votre resto préféré, à portée de main",
+  title: "KmandyFood Tunisie",
   description: "Découvrez les meilleurs restaurants tunisiens près de chez vous",
   icons: {
     icon: "/foodhub-logo.png",

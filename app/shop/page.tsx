@@ -127,7 +127,7 @@ export default function ShopPage() {
         {/* Features Section */}
         <div className="py-20">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-16">Pourquoi FoodHub ?</h2>
+            <h2 className="text-4xl font-bold text-center mb-16">Pourquoi KmandyFood ?</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="bg-white p-8 rounded-3xl shadow-lg hover:shadow-xl transition">
                 <div className="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
@@ -221,7 +221,7 @@ export default function ShopPage() {
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="text-4xl font-bold mb-6">Prêt à moderniser votre restaurant ?</h2>
             <p className="text-xl mb-8">
-              Rejoignez des centaines de restaurateurs qui font confiance à FoodHub
+              Rejoignez des centaines de restaurateurs qui font confiance à KmandyFood
               pour développer leur activité.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

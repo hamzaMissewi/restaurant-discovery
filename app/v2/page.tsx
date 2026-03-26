@@ -39,7 +39,7 @@ export default function V2Page() {
           <div className="relative">
             <img
               src="/hero-image.png"
-              alt="FoodHub Hero"
+              alt="KmandyFood Hero"
               className="rounded-3xl shadow-2xl"
             />
           </div>
